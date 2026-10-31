@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Colorful - Dulces artesanales, innovadores y sostenibles de Tenjo, Cundinamarca.">
+    <title>Colorful | Sabor que también tiene propósito</title>
+
+    <style>
+        /* =========================
+           VARIABLES
+        ========================== */
+        :root {
+            --verde: #557a55;
+            --verde-claro: #dfe9d8;
+            --crema: #fff8ed;
+            --amarillo: #f4c95d;
+            --rosado: #e8a6a6;
+            --terracota: #c9785d;
+            --cafe: #4d3b32;
+            --blanco: #ffffff;
+            --gris: #6f6f6f;
+            --negro: #252525;
+            --sombra: 0 10px 30px rgba(60, 45, 35, 0.10);
+            --radio: 22px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--crema);
+            color: var(--cafe);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font-family: inherit;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 248, 237, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(77, 59, 50, 0.08);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            height: 75px;
+            padding: 0 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(
+                135deg,
+                var(--amarillo),
+                var(--rosado),
+                var(--verde)
+            );
+            display: grid;
+            place-items: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--terracota);
+        }
+
+        .nav-button {
+            background: var(--verde);
+            color: white !important;
+            padding: 11px 18px;
+            border-radius: 30px;
+        }
+
+        .menu-btn {
+            display: none;
+            border: none;
+            background: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+            padding: 130px 25px 70px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: var(--verde-claro);
+            right: -170px;
+            top: 100px;
+            opacity: 0.7;
+        }
+
+        .hero-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text span {
+            color: var(--terracota);
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(48px, 7vw, 85px);
+            line-height: 0.95;
+            margin: 15px 0 25px;
+            letter-spacing: -3px;
+        }
+
+        .hero-text h1 em {
+            color: var(--verde);
+            font-style: normal;
+        }
+
+        .hero-text p {
+            max-width: 530px;
+            font-size: 18px;
+            color: var(--gris);
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: none;
+            cursor: pointer;
+            padding: 14px 23px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--verde);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--sombra);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--cafe);
+            color: var(--cafe);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: var(--cafe);
+            color: white;
+        }
+
+        .hero-product {
+            min-height: 480px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .product-card-hero {
+            width: 330px;
+            height: 420px;
+            border-radius: 180px 180px 35px 35px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,.4),
+                    rgba(255,255,255,.05)
+                ),
+                var(--amarillo);
+            box-shadow: 20px 30px 60px rgba(77,59,50,.18);
+            transform: rotate(5deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .product-card-hero::before {
+            content: "";
+            position: absolute;
+            inset: 18px;
+            border: 2px dashed rgba(77,59,50,.3);
+            border-radius: 165px 165px 25px 25px;
+        }
+
+        .hero-label {
+            background: rgba(255,248,237,.92);
+            padding: 35px;
+            width: 220px;
+            text-align: center;
+            transform: rotate(-5deg);
+            border-radius: 10px;
+            box-shadow: var(--sombra);
+        }
+
+        .hero-label h2 {
+            font-size: 38px;
+            letter-spacing: 3px;
+        }
+
+        .hero-label p {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 8px;
+        }
+
+        .floating {
+            position: absolute;
+            padding: 12px 18px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: var(--sombra);
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .floating.one {
+            top: 60px;
+            right: 30px;
+        }
+
+        .floating.two {
+            bottom: 50px;
+            left: 20px;
+        }
+
+        /* =========================
+           SECCIONES
+        ========================== */
+
+        section {
+            padding: 95px 25px;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .section-header span {
+            color: var(--terracota);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .section-header h2 {
+            font-size: clamp(32px, 5vw, 52px);
+            margin: 10px 0 15px;
+            line-height: 1.05;
+        }
+
+        .section-header p {
+            color: var(--gris);
+        }
+
+        /* =========================
+           SOBRE COLORFUL
+        ========================== */
+
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-visual {
+            min-height: 430px;
+            background:
+                radial-gradient(circle at 30% 30%, #f4c95d 0 12%, transparent 13%),
+                radial-gradient(circle at 75% 25%, #e8a6a6 0 15%, transparent 16%),
+                radial-gradient(circle at 55% 70%, #557a55 0 14%, transparent 15%),
+                var(--crema);
+            border-radius: var(--radio);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-visual::after {
+            content: "COLORFUL";
+            position: absolute;
+            font-size: 70px;
+            font-weight: 900;
+            opacity: .08;
+            transform: rotate(-15deg);
+            left: 25px;
+            bottom: 70px;
+        }
+
+        .about-content h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: var(--gris);
+            margin-bottom: 20px;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .value {
+            padding: 18px;
+            border-radius: 15px;
+            background: var(--crema);
+        }
+
+        .value strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .value small {
+            color: var(--gris);
+        }
+
+        /* =========================
+           PRODUCTOS
+        ========================== */
+
+        .products {
+            background: var(--crema);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+            border-radius: var(--radio);
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: .3s;
+        }
+
+        .product:hover {
+            transform: translateY(-7px);
+        }
+
+        .product-image {
+            height: 240px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .product:nth-child(1) .product-image {
+            background: #f4c95d;
+        }
+
+        .product:nth-child(2) .product-image {
+            background: #e8a6a6;
+        }
+
+        .product:nth-child(3) .product-image {
+            background: #b8c9a9;
+        }
+
+        .mini-bar {
+            width: 130px;
+            height: 180px;
+            background: #8b563e;
+            border-radius: 18px;
+            transform: rotate(-8deg);
+            box-shadow: 10px 15px 25px rgba(0,0,0,.18);
+            position: relative;
+        }
+
+        .mini-bar::after {
+            content: "COLORFUL";
+            position: absolute;
+            background: var(--crema);
+            color: var(--cafe);
+            padding: 8px 5px;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            top: 65px;
+            left: -10px;
+            right: -10px;
+            text-align: center;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-size: 22px;
+            margin-bottom: 7px;
+        }
+
+        .product-info p {
+            color: var(--gris);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 10px;
+            background: var(--verde-claro);
+            color: var(--verde);
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           DIFERENCIAL
+        ========================== */
+
+        .difference {
+            background: var(--verde);
+            color: white;
+        }
+
+        .difference .section-header span {
+            color: var(--amarillo);
+        }
+
+        .difference .section-header p {
+            color: rgba(255,255,255,.75);
+        }
+
+        .difference-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .difference-card {
+            padding: 30px 22px;
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: var(--radio);
+            background: rgba(255,255,255,.07);
+            transition: .3s;
+        }
+
+        .difference-card:hover {
+            background: rgba(255,255,255,.13);
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--amarillo);
+            color: var(--cafe);
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .difference-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .difference-card p {
+            color: rgba(255,255,255,.75);
+            font-size: 14px;
+        }
+
+        /* =========================
+           SOSTENIBILIDAD
+        ========================== */
+
+        .sustainability {
+            background: white;
+        }
+
+        .sustain-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .leaf-box {
+            min-height: 400px;
+            background: var(--verde-claro);
+            border-radius: 50% 50% 25px 25px;
+            display: grid;
+            place-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leaf-box .leaf {
+            font-size: 170px;
+            filter: grayscale(.2);
+        }
+
+        .sustain-content h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .sustain-content p {
+            color: var(--gris);
+            margin-bottom: 20px;
+        }
+
+        .ods {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .ods span {
+            background: var(--crema);
+            padding: 12px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           AIDA
+        ========================== */
+
+        .aida {
+            background: var(--crema);
+        }
+
+        .aida-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .aida-card {
+            background: white;
+            padding: 30px 22px;
+            border-radius: var(--radio);
+            box-shadow: var(--sombra);
+            position: relative;
+        }
+
+        .aida-number {
+            font-size: 50px;
+            font-weight: 900;
+            color: var(--verde-claro);
+            line-height: 1;
+        }
+
+        .aida-card h3 {
+            margin: 15px 0 10px;
+        }
+
+        .aida-card p {
+            color: var(--gris);
+            font-size: 14px;
+        }
+
+        /* =========================
+           CONTACTO
+        ========================== */
+
+        .contact {
+            background: var(--cafe);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact h2 {
+            font-size: 48px;
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: rgba(255,255,255,.7);
+            margin-bottom: 30px;
+        }
+
+        .contact-form {
+            background: white;
+            color: var(--cafe);
+            padding: 30px;
+            border-radius: var(--radio);
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 13px;
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form button {
+            width: 100%;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #30251f;
+            color: white;
+            padding: 35px 25px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: center;
+        }
+
+        footer p {
+            color: rgba(255,255,255,.6);
+            font-size: 13px;
+        }
+
+        .footer-logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           WHATSAPP
+        ========================== */
+
+        .whatsapp {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            color: white;
+            display: grid;
+            place-items: center;
+            font-size: 27px;
+            z-index: 999;
+            box-shadow: 0 8px 25px rgba(0,0,0,.2);
+            transition: .3s;
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.08);
+        }
+
+        /* =========================
+           MENSAJE FORMULARIO
+        ========================== */
+
+        #formMessage {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            background: var(--verde-claro);
+            color: var(--verde);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: var(--crema);
+                flex-direction: column;
+                padding: 25px;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero-container,
+            .about-grid,
+            .sustain-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .difference-grid,
+            .aida-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-product {
+                min-height: 400px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 70px 20px;
+            }
+
+            .product-grid,
+            .difference-grid,
+            .aida-grid,
+            .values {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 55px;
+            }
+
+            .product-card-hero {
+                width: 260px;
+                height: 350px;
+            }
+
+            .floating.one {
+                right: 0;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <header>
+        <nav>
+
+            <a href="#inicio" class="logo">
+                <span class="logo-icon">C</span>
+                COLORFUL
+            </a>
+
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#sostenibilidad">Sostenibilidad</a></li>
+                <li><a href="#aida">Experiencia</a></li>
+                <li><a href="#contacto" class="nav-button">Comprar</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-container">
+
+                <div class="hero-text">
+
+                    <span>Dulcería artesanal · Tenjo, Cundinamarca</span>
+
+                    <h1>
+                        Sabor que
+                        <em>también</em>
+                        tiene propósito.
+                    </h1>
+
+                    <p>
+                        Colorful crea barras de dulce artesanales con sabores
+                        innovadores, ingredientes seleccionados y una propuesta
+                        de empaque ecológico.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#productos" class="btn btn-primary">
+                            Descubrir sabores
+                        </a>
+
+                        <a href="#nosotros" class="btn btn-secondary">
+                            Conocer Colorful
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-product">
+
+                    <div class="product-card-hero">
+
+                        <div class="hero-label">
+                            <h2>COLORFUL</h2>
+                            <p>
+                                Artisan Sweet<br>
+                                Tenjo · Colombia
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="floating one">
+                        🌱 Empaque ecológico
+                    </div>
+
+                    <div class="floating two">
+                        ✨ Elaboración artesanal
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             NOSOTROS
+        ========================== -->
+
+        <section class="about" id="nosotros">
+
+            <div class="section-container">
+
+                <div class="section-header">
+                    <span>La idea</span>
+                    <h2>Más que un dulce.</h2>
+                    <p>
+                        Una propuesta que conecta sabor, innovación,
+                        artesanía y sostenibilidad.
+                    </p>
+                </div>
+
+
+                <div class="about-grid">
+
+                    <div class="about-visual"></div>
+
+                    <div class="about-content">
+
+                        <h3>¿Qué es Colorful?</h3>
+
+                        <p>
+                            Colorful es una propuesta de dulcería artesanal
+                            ubicada en Tenjo, Cundinamarca, creada para ofrecer
+                            una alternativa diferente frente a los productos
+                            convencionales.
+                        </p>
+
+                        <p>
+                            La marca combina técnicas artesanales, sabores
+                            innovadores, ingredientes como frutos secos y
+                            cereales y una presentación atractiva que busca
+                            generar una experiencia de consumo diferente.
+                        </p>
+
+                        <div class="values">
+
+                            <div class="value">
+                                <strong>🎨 Innovación</strong>
+                                <small>
+                                    Nuevas combinaciones y experiencias.
+                                </small>
+                            </div>
+
+                            <div class="value">
+                                <strong>🌱 Sostenibilidad</strong>
+                                <small>
+                                    Alternativas de empaque ecológico.
+                                </small>
+                            </div>
+
+                            <div class="value">
+                                <strong>🤲 Artesanal</strong>
+                                <small>
+                                    Elaboración con atención al detalle.
+                                </small>
+                            </div>
+
+                            <div class="value">
+                                <strong>📍 Local</strong>
+                                <small>
+                                    Una propuesta vinculada con Tenjo.
+                                </small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PRODUCTOS
+        ========================== -->
+
+        <section class="products" id="productos">
+
+            <div class="section-container">
+
+                <div class="section-header">
+
+                    <span>Nuestros productos</span>
+
+                    <h2>Pequeñas barras, grandes sabores.</h2>
+
+                    <p>
+                        Una propuesta visualmente atractiva y pensada para
+                        consumidores que buscan algo diferente.
+                    </p>
+
+                </div>
+
+
+                <div class="product-grid">
+
+                    <article class="product">
+
+                        <div class="product-image">
+                            <div class="mini-bar"></div>
+                        </div>
+
+                        <div class="product-info">
+
+                            <h3>Clásico Colorful</h3>
+
+                            <p>
+                                Una combinación equilibrada para quienes
+                                prefieren sabores conocidos con un toque
+                                artesanal.
+                            </p>
+
+                            <span class="tag">
+                                Artesanal
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="product">
+
+                        <div class="product-image">
+                            <div class="mini-bar"></div>
+                        </div>
+
+                        <div class="product-info">
+
+                            <h3>European Twist</h3>
+
+                            <p>
+                                Inspirado en sabores de la cultura
+                                gastronómica europea para una experiencia
+                                diferente.
+                            </p>
+
+                            <span class="tag">
+                                Innovador
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="product">
+
+                        <div class="product-image">
+                            <div class="mini-bar"></div>
+                        </div>
+
+                        <div class="product-info">
+
+                            <h3>Nut & Grain</h3>
+
+                            <p>
+                                Una propuesta que incorpora frutos secos y
+                                cereales para aportar textura y personalidad.
+                            </p>
+
+                            <span class="tag">
+                                Diferente
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             DIFERENCIAL
+        ========================== -->
+
+        <section class="difference">
+
+            <div class="section-container">
+
+                <div class="section-header">
+
+                    <span>Propuesta de valor</span>
+
+                    <h2>¿Por qué Colorful?</h2>
+
+                    <p>
+                        La marca busca diferenciarse de la oferta industrial
+                        mediante una experiencia más cercana, artesanal y
+                        responsable.
+                    </p>
+
+                </div>
+
+
+                <div class="difference-grid">
+
+                    <div class="difference-card">
+
+                        <div class="icon">✨</div>
+
+                        <h3>Innovación</h3>
+
+                        <p>
+                            Sabores y presentaciones pensados para salir de
+                            lo convencional.
+                        </p>
+
+                    </div>
+
+
+                    <div class="difference-card">
+
+                        <div class="icon">🤲</div>
+
+                        <h3>Artesanal</h3>
+
+                        <p>
+                            Elaboración con procesos que resaltan el trabajo
+                            y cuidado del producto.
+                        </p>
+
+                    </div>
+
+
+                    <div class="difference-card">
+
+                        <div class="icon">🌱</div>
+
+                        <h3>Ecológico</h3>
+
+                        <p>
+                            Desarrollo de una alternativa de empaque basada
+                            en recursos vegetales.
+                        </p>
+
+                    </div>
+
+
+                    <div class="difference-card">
+
+                        <div class="icon">📍</div>
+
+                        <h3>Local</h3>
+
+                        <p>
+                            Una propuesta pensada para conectar con Tenjo,
+                            sus habitantes y sus visitantes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SOSTENIBILIDAD
+        ========================== -->
+
+        <section class="sustainability" id="sostenibilidad">
+
+            <div class="section-container">
+
+                <div class="sustain-grid">
+
+                    <div class="leaf-box">
+                        <div class="leaf">🌿</div>
+                    </div>
+
+
+                    <div class="sustain-content">
+
+                        <span style="
+                            color: var(--terracota);
+                            font-size: 12px;
+                            text-transform: uppercase;
+                            letter-spacing: 2px;
+                            font-weight: bold;
+                        ">
+                            Nuestro compromiso
+                        </span>
+
+                        <h2>
+                            El empaque también cuenta la historia.
+                        </h2>
+
+                        <p>
+                            Colorful propone utilizar una alternativa de
+                            empaque ecológico elaborada a partir de recursos
+                            vegetales, como la vaina o cáscara de plátano,
+                            buscando disminuir el uso de materiales
+                            convencionales.
+                        </p>
+
+                        <p>
+                            Esta propuesta se relaciona con una visión de
+                            producción responsable y con el aprovechamiento
+                            de recursos disponibles en el entorno.
+                        </p>
+
+                        <div class="ods">
+
+                            <span>ODS 8 · Trabajo decente</span>
+
+                            <span>
+                                ODS 12 · Producción responsable
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             AIDA
+        ========================== -->
+
+        <section class="aida" id="aida">
+
+            <div class="section-container">
+
+                <div class="section-header">
+
+                    <span>Experiencia Colorful</span>
+
+                    <h2>Del descubrimiento a la compra.</h2>
+
+                    <p>
+                        Nuestra estrategia comercial utiliza el modelo AIDA
+                        para acompañar al consumidor durante su decisión.
+                    </p>
+
+                </div>
+
+
+                <div class="aida-grid">
+
+                    <div class="aida-card">
+
+                        <div class="aida-number">01</div>
+
+                        <h3>Atención</h3>
+
+                        <p>
+                            Contenido visual, publicaciones y videos para
+                            presentar Colorful y generar reconocimiento.
+                        </p>
+
+                    </div>
+
+
+                    <div class="aida-card">
+
+                        <div class="aida-number">02</div>
+
+                        <h3>Interés</h3>
+
+                        <p>
+                            Sabores, ingredientes, proceso artesanal y
+                            contenido interactivo para despertar curiosidad.
+                        </p>
+
+                    </div>
+
+
+                    <div class="aida-card">
+
+                        <div class="aida-number">03</div>
+
+                        <h3>Deseo</h3>
+
+                        <p>
+                            Comunicación de los atributos diferenciales:
+                            sabor, innovación, artesanía y sostenibilidad.
+                        </p>
+
+                    </div>
+
+
+                    <div class="aida-card">
+
+                        <div class="aida-number">04</div>
+
+                        <h3>Acción</h3>
+
+                        <p>
+                            Contacto directo mediante WhatsApp y canales de
+                            pedido para facilitar la conversión.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACTO
+        ========================== -->
+
+        <section class="contact" id="contacto">
+
+            <div class="section-container">
+
+                <div class="contact-grid">
+
+                    <div>
+
+                        <h2>
+                            ¿Quieres probar algo diferente?
+                        </h2>
+
+                        <p>
+                            Déjanos tus datos y cuéntanos qué sabor te
+                            gustaría probar. Esta información también nos
+                            ayudará a conocer mejor las preferencias de
+                            nuestros consumidores.
+                        </p>
+
+                        <a
+                            class="btn btn-primary"
+                            href="https://wa.me/573000000000"
+                            target="_blank"
+                        >
+                            Escribir por WhatsApp
+                        </a>
+
+                    </div>
+
+
+                    <form
+                        class="contact-form"
+                        id="orderForm"
+                    >
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                Nombre
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Tu nombre"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="correo@ejemplo.com"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="flavor">
+                                ¿Qué te gustaría probar?
+                            </label>
+
+                            <select id="flavor">
+
+                                <option>
+                                    Clásico Colorful
+                                </option>
+
+                                <option>
+                                    European Twist
+                                </option>
+
+                                <option>
+                                    Nut & Grain
+                                </option>
+
+                                <option>
+                                    Quiero conocer todos
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="message">
+                                Mensaje
+                            </label>
+
+                            <textarea
+                                id="message"
+                                placeholder="Cuéntanos qué opinas..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            Enviar interés
+                        </button>
+
+                        <div id="formMessage">
+                            ¡Gracias! Tu interés fue registrado.
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-logo">
+                COLORFUL
+            </div>
+
+            <p>
+                Dulcería artesanal · Tenjo, Cundinamarca
+            </p>
+
+            <p>
+                © 2026 Colorful
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         WHATSAPP
+    ========================== -->
+
+    <a
+        class="whatsapp"
+        href="https://wa.me/573000000000"
+        target="_blank"
+        aria-label="Contactar por WhatsApp"
+    >
+        ☎
+    </a>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /* Menú móvil */
+
+        function toggleMenu() {
+
+            const menu = document.getElementById("navLinks");
+
+            menu.classList.toggle("active");
+
+        }
+
+
+        /* Cerrar menú al seleccionar una opción */
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                document
+                    .getElementById("navLinks")
+                    .classList.remove("active");
+
+            });
+
+        });
+
+
+        /* Formulario */
+
+        document
+            .getElementById("orderForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const message =
+                    document.getElementById("formMessage");
+
+                message.style.display = "block";
+
+                this.reset();
+
+                setTimeout(() => {
+
+                    message.style.display = "none";
+
+                }, 5000);
+
+            });
+
+
+        /* Animación al hacer scroll */
+
+        const observer = new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+        document
+            .querySelectorAll(
+                ".product, .difference-card, .aida-card, .value"
+            )
+            .forEach(element => {
+
+                element.style.opacity = "0";
+                element.style.transform = "translateY(25px)";
+                element.style.transition =
+                    "opacity .6s ease, transform .6s ease";
+
+                observer.observe(element);
+
+            });
+
+    </script>
+
+</body>
+</html>
